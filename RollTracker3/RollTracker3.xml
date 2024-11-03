@@ -1,0 +1,190 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/"> 
+	
+	<Script file="RollTracker3.lua"/>
+
+	<Frame name="RollTracker3Frame" parent="UIParent" hidden="true" movable="true" enableMouse="true" frameStrata="HIGH" resizable="true">
+		<Size><AbsDimension x="180" y="216"/></Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+			<Offset><AbsDimension x="300" y="0"/></Offset>
+		</Anchors>
+		<Backdrop name="$parentBackdrop" bgFile="Interface\TutorialFrame\TutorialFrameBackground"
+		edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="64"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>	
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Roll Tracker" justifyH="LEFT" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-10"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+
+				<FontString name="$parentStatusText" inherits="GameFontNormalSmall" text="0 Rolls" justifyH="LEFT" justifyV="TOP">
+					<Color r="0.5" g="0.5" b="1.0"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="10" y="10"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="20"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>		
+			</Layer>
+		</Layers>
+
+		<Frames>
+			<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="RollTracker3Frame" relativePoint="TOPRIGHT"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						RollTracker3Frame:Hide()
+						RollTracker3_HideWindow()
+					</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentClearButton" inherits="UIPanelButtonTemplate" text="Clear">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parentStatusText">
+						<Offset>
+							<AbsDimension x="-4" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="75" y="16"/></Size>
+				<Scripts>
+					<OnClick>
+						RollTracker3_ClearRolls()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentRollButton" inherits="UIPanelButtonTemplate" text="Roll">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT" relativeTo="$parentStatusText">
+						<Offset>
+							<AbsDimension x="-4" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="75" y="16"/></Size>
+				<Scripts>
+					<OnClick>
+						RandomRoll(1, 100)
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentResizeGrip" inherits="UIPanelButtonTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="RollTracker3Frame">
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="16" y="16"/></Size>
+				<NormalTexture file="Interface\AddOns\RollTracker3\ResizeGrip.tga"/>
+				<PushedTexture file="Interface\AddOns\RollTracker3\ResizeGrip.tga"/>
+				<Scripts>
+					<OnMouseDown>
+						RollTracker3Frame:StartSizing()
+					</OnMouseDown>
+					<OnMouseUp>
+						RollTracker3Frame:StopMovingOrSizing();
+						RollTracker3_SaveAnchors()
+					</OnMouseUp>
+				</Scripts>
+			</Button>
+			<ScrollFrame name="$parentRollScrollFrame" inherits="UIPanelScrollFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="6" y="-30"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT" relativeTo="$parentRollButton">
+						<Offset>
+							<AbsDimension x="-24" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<ScrollChild>
+					<Frame name="$parentScrollChild">
+						<Size>
+							<AbsDimension x="30" y="30"/>
+						</Size>
+						<Frames>
+							<SimpleHTML name="RollTracker3RollText">
+
+								<Anchors>
+									<Anchor point="TOPLEFT" relativeTo="RollTracker3FrameRollScrollFrameScrollChild">
+										<Offset>
+											<AbsDimension x="0" y="-2"/>
+										</Offset>
+									</Anchor>
+									<Anchor point="BOTTOMRIGHT" relativeTo="RollTracker3FrameRollScrollFrame">
+										<Offset>
+											<AbsDimension x="0" y="2"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<FontString name="RollTracker3FontString" inherits="ChatFontNormal" justifyH="LEFT" justifyV="TOP">
+									<Size>
+										<AbsDimension x="270" y="0"/>
+									</Size>
+									<Color r="1" g="1" b="1" a="1.0" />
+								</FontString>
+							</SimpleHTML>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+		</Frames>
+		
+		<Scripts>
+			<OnLoad>
+				self:SetMinResize(130,150)
+				self:RegisterForDrag("LeftButton")
+				self:RegisterEvent("ADDON_LOADED")
+				self:RegisterEvent("CHAT_MSG_SYSTEM")
+			</OnLoad>
+			<OnEvent>
+				local arg1 = ...
+				if (event == "ADDON_LOADED" and arg1 == "RollTracker3") then
+					self:UnregisterEvent("ADDON_LOADED")
+					RollTracker3_OnLoad(self)
+				elseif (event == "CHAT_MSG_SYSTEM") then
+					RollTracker3_CHAT_MSG_SYSTEM(arg1);
+				end
+			</OnEvent>
+			<OnDragStart>
+				self:StartMoving()
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+				RollTracker3_SaveAnchors()
+			</OnDragStop>
+		</Scripts>
+	</Frame>
+</Ui>

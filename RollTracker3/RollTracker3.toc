@@ -1,0 +1,8 @@
+## Interface: 30300
+## Title: RollTracker 3
+## Notes: Keeps tracks of /rolls.
+## Version: 3.2
+## Author: Jerry Chong, Telkar-RG
+## SavedVariables: RollTracker3DB
+
+RollTracker3.xml
