@@ -22,7 +22,7 @@
 		</Backdrop>	
 		<Layers>
 			<Layer level="BACKGROUND">
-				<FontString name="$parentTitle" inherits="GameFontNormal" text="Roll Tracker" justifyH="LEFT" justifyV="TOP">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Roll Tracker 3" justifyH="LEFT" justifyV="TOP">
 					<Anchors>
 						<Anchor point="TOPLEFT">
 							<Offset>
