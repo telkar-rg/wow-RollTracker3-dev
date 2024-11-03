@@ -15,26 +15,32 @@ local locales = {
 	deDE = {
 		["All rolls have been cleared."] = "Alle Würfelergebnisse gelöscht.",
 		["%d Roll(s)"] = "%d Würfelergebnisse",
+		["SLASH_RANDOM8"] = "/würfeln",
 	},
 	esES = {
 		["All rolls have been cleared."] = "Todas las tiradas han sido borradas.",
 		["%d Roll(s)"] = "%d Tiradas",
+		["SLASH_RANDOM8"] = "/roll",
 	},
 	frFR = {
 		["All rolls have been cleared."] = "Tous les jets ont été effacés.",
 		["%d Roll(s)"] = "%d Jet(s)",
+		["SLASH_RANDOM8"] = "/roll",
 	},
 	ruRU = {
 		["All rolls have been cleared."] = "Все броски костей очищены.",
 		["%d Roll(s)"] = "%d броска(ов)",
+		["SLASH_RANDOM8"] = "/бросок",
 	},
 	zhCN = {
 		["All rolls have been cleared."] = "所有骰子已被清除。",
 		["%d Roll(s)"] = "%d个骰子",
+		["SLASH_RANDOM8"] = "/roll",
 	},
 	zhTW = {
 		["All rolls have been cleared."] = "所有擲骰紀錄已被清除。",
 		["%d Roll(s)"] = "共計 %d 人擲骰",
+		["SLASH_RANDOM8"] = "/roll",
 	},
 }
 local L = locales[GetLocale()] or {}
@@ -43,6 +49,7 @@ setmetatable(L, {
 	__index = {
 		["%d Roll(s)"] = "%d Roll(s)",
 		["All rolls have been cleared."] = "All rolls have been cleared.",
+		["SLASH_RANDOM8"] = "/roll",
 	},
 })
 
@@ -75,10 +82,13 @@ function RollTracker3_OnLoad(self)
 		self:SetWidth(w)
 		self:SetHeight(h)
 	end
+	RollTracker3FrameRollButton:SetText(L["SLASH_RANDOM8"])
 	
 	-- slash command
 	SLASH_ROLLTRACKER1 = "/rolltracker";
 	SLASH_ROLLTRACKER2 = "/rt";
+	SLASH_ROLLTRACKER3 = "/rt3";
+	
 	SlashCmdList["ROLLTRACKER"] = function (msg)
 		if msg == "clear" then
 			RollTracker3_ClearRolls()
