@@ -22,7 +22,7 @@
 		</Backdrop>	
 		<Layers>
 			<Layer level="BACKGROUND">
-				<FontString name="$parentTitle" inherits="GameFontNormal" text="Roll Tracker 3" justifyH="LEFT" justifyV="TOP">
+				<FontString name="$parentTitle" inherits="ChatFontNormal" text="Roll Tracker 3" justifyH="LEFT" justifyV="TOP">
 					<Anchors>
 						<Anchor point="TOPLEFT">
 							<Offset>
@@ -168,6 +168,7 @@
 				self:RegisterForDrag("LeftButton")
 				self:RegisterEvent("ADDON_LOADED")
 				self:RegisterEvent("CHAT_MSG_SYSTEM")
+				self:RegisterEvent("CHAT_MSG_RAID_WARNING")
 			</OnLoad>
 			<OnEvent>
 				local arg1 = ...
@@ -176,6 +177,8 @@
 					RollTracker3_OnLoad(self)
 				elseif (event == "CHAT_MSG_SYSTEM") then
 					RollTracker3_CHAT_MSG_SYSTEM(arg1);
+				elseif (event == "CHAT_MSG_RAID_WARNING") then
+					RollTracker3_CHAT_MSG_RAID_WARNING(arg1);
 				end
 			</OnEvent>
 			<OnDragStart>
