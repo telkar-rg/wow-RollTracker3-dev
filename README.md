@@ -1,5 +1,4 @@
 # wow-RollTracker3-dev
-<img src="_IMG/Frame%201.png" align="right">
 Tiny WoW 3.3.5 addon to keep track of /rolls 
  
 > `/rolltracker`
@@ -9,9 +8,9 @@ Tiny WoW 3.3.5 addon to keep track of /rolls
 > `/rt3`
 <table border="0">
  <tr>
-    <td><p align="center"><img src="_IMG/Frame%202.png" width="50%"></p></td>
-    <td><p align="center"><img src="_IMG/Frame%203.png" width="50%"></p></td>
-    <td><p align="center"><img src="_IMG/Frame%204.png" width="50%"></p></td>
+    <td><p align="center"><img src="_IMG/Frame%202.png"></p></td>
+    <td><p align="center"><img src="_IMG/Frame%203.png"></p></td>
+    <td><p align="center"><img src="_IMG/Frame%204.png"></p></td>
  </tr>
  <tr>
     <td><p align="center"><img src="_IMG/Chat%202.png"></p></td>
