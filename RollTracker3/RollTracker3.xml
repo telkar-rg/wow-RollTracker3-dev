@@ -21,17 +21,26 @@
 			</BackgroundInsets>
 		</Backdrop>	
 		<Layers>
-			<Layer level="BACKGROUND">
-				<FontString name="$parentTitle" inherits="ChatFontNormal" text="Roll Tracker 3" justifyH="LEFT" justifyV="TOP">
+			<Layer level="BACKGROUND" textureSubLevel="1">
+				<Texture name="$parent_TitleBackdrop" alpha="0.75">
+					<Anchors>
+						<Anchor x="7" y="-7" point="TOPLEFT" />
+						<Anchor x="-15" y="-25" point="BOTTOMRIGHT" relativePoint="TOPRIGHT" />
+					</Anchors>
+					<Color r="0" g="0" b="0" a="1" />
+				</Texture>
+			</Layer>
+			<Layer level="BACKGROUND" textureSubLevel="2">
+				<FontString name="$parentTitle" inherits="ChatFontNormal" text="Roll Tracker 3" justifyH="CENTER" justifyV="TOP">
 					<Anchors>
 						<Anchor point="TOPLEFT">
 							<Offset>
-								<AbsDimension x="10" y="-10"/>
+								<AbsDimension x="5" y="-8"/>
 							</Offset>
 						</Anchor>
 						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
 							<Offset>
-								<AbsDimension x="-10" y="-30"/>
+								<AbsDimension x="-25" y="-30"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -120,7 +129,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset>
-							<AbsDimension x="6" y="-30"/>
+							<AbsDimension x="6" y="-27"/>
 						</Offset>
 					</Anchor>
 					<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT" relativeTo="$parentRollButton">
