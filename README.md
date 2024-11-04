@@ -8,6 +8,11 @@ Tiny WoW 3.3.5 addon to keep track of /rolls
 > `/rt3`
 <table border="0">
  <tr>
+    <td><p align="center">No raid warning since last clear</p></td>
+    <td><p align="center">Raid warning: Epic item</p></td>
+    <td><p align="center">Raid warning: Rare item</p></td>
+ </tr>
+ <tr>
     <td><p align="center"><img src="_IMG/Frame%202.png"></p></td>
     <td><p align="center"><img src="_IMG/Frame%203.png"></p></td>
     <td><p align="center"><img src="_IMG/Frame%204.png"></p></td>
