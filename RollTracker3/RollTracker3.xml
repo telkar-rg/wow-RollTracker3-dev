@@ -22,7 +22,7 @@
 		</Backdrop>	
 		<Layers>
 			<Layer level="BACKGROUND" textureSubLevel="1">
-				<Texture name="$parent_TitleBackdrop" alpha="0.75">
+				<Texture name="$parent_TitleBackdrop" alpha="0.5">
 					<Anchors>
 						<Anchor x="7" y="-7" point="TOPLEFT" />
 						<Anchor x="-15" y="-25" point="BOTTOMRIGHT" relativePoint="TOPRIGHT" />
